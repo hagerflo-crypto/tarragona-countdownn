@@ -33,6 +33,8 @@
             max-width: 600px;
             width: 90%;
             animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 3;
         }
         
         @keyframes fadeIn {
@@ -119,12 +121,13 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .hearts {
+        .background-elements {
             position: absolute;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
+            overflow: hidden;
         }
         
         .heart {
@@ -142,6 +145,97 @@
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.3;
+            }
+        }
+        
+        .flag {
+            position: absolute;
+            width: 80px;
+            height: 50px;
+            border-radius: 8px;
+            opacity: 0.8;
+            animation: floatFlag 8s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+        
+        .ireland-flag {
+            background: linear-gradient(to right, #009639 33.33%, white 33.33%, white 66.66%, #ff7900 66.66%);
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .spain-flag {
+            background: linear-gradient(to bottom, #c60b1e 25%, #ffc400 25%, #ffc400 75%, #c60b1e 75%);
+            top: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        @keyframes floatFlag {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-15px) scale(1.05);
+                opacity: 0.9;
+            }
+        }
+        
+        .love-arrow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            color: rgba(255, 182, 193, 0.8);
+            animation: arrowPulse 3s ease-in-out infinite;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes arrowPulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1) rotate(5deg);
+                opacity: 1;
+            }
+        }
+        
+        .big-heart {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 80px;
+            color: rgba(255, 105, 180, 0.8);
+            animation: heartBeat 2.5s ease-in-out infinite;
+            z-index: 2;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 1;
+            }
+            75% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 0.8;
             }
         }
         
@@ -172,7 +266,8 @@
     </style>
 </head>
 <body>
-    <div class="hearts">
+    <div class="background-elements">
+        <!-- Kleine schwebende Herzen und Sterne -->
         <div class="heart" style="left: 10%; animation-delay: 0s;">❤</div>
         <div class="heart" style="left: 20%; animation-delay: 1s;">🌟</div>
         <div class="heart" style="left: 30%; animation-delay: 2s;">❤</div>
@@ -182,11 +277,23 @@
         <div class="heart" style="left: 70%; animation-delay: 0.5s;">❤</div>
         <div class="heart" style="left: 80%; animation-delay: 1.5s;">🌟</div>
         <div class="heart" style="left: 90%; animation-delay: 2.5s;">❤</div>
+        
+        <!-- Irland Flagge -->
+        <div class="flag ireland-flag"></div>
+        
+        <!-- Spanien Flagge -->
+        <div class="flag spain-flag"></div>
+        
+        <!-- Pfeil der von Irland zu Spanien zeigt -->
+        <div class="love-arrow">💕➡️</div>
+        
+        <!-- Großes Herz unten -->
+        <div class="big-heart">💖</div>
     </div>
     
     <div class="container">
         <h1>Wiedersehen in Tarragona</h1>
-        <p class="subtitle">Countdown bis zu unserem besonderen Moment</p>
+        <p class="subtitle">Ich liebe dich Shannon</p>
         
         <div class="countdown">
             <div class="time-unit">
